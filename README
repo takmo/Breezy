@@ -52,9 +52,17 @@ If you need me for anything involving this, please do not email me (the one
 I commit with is not checked often). Instead, message me on the Ogre3d forums.
 http://www.ogre3d.org/forums/memberlist.php?mode=viewprofile&u=28548
 
+I am a beginner, so you can expect some errors or incorrrect coding practices.
+If you find a problem, I would love to find out what it is and learn from my
+mistake. I'm putting this framework on the internet in hopes that this may
+be able to help others with their programming in some way.
+
+Made in with Ogre 1.7.1 using Microsoft Visual C++ 2010 Express Edition on
+Windows 7. I cannot guarantee functionality on other systems.
+
 -Contents- ---------- ---------- ----------
 
-/Breezy/ - The framework, just copy and paste this into your project folder to use.
+/Breezy/ - The framework, copy and paste this into your project folder.
 /Media/ - Any media used in the samples. Only applies when using BreezySample.h
 Main.cpp - Shows the basic Breezy sample. Create an empty project HERE and add this.
 plugins.cfg - Ogre plugins file.
@@ -71,9 +79,17 @@ and Gorilla.cpp inside your Breezy folder.
 
 Create a project here using Main.cpp and look in Breezy/BreezySample.cpp for help
 using the different parts of the framework. bool Sample::Start() is the only function
-you really need to look in. I probably don't even need to mention this, but you will need
-to copy your DLLs into this folder or edit plugins.cfg and plugins_d.cfg and set the
-PluginFolder to your correct Ogre bin.
+you really need to look in. You will needto copy your DLLs into this folder or 
+edit plugins.cfg and plugins_d.cfg and set the PluginFolder to your correct Ogre
+bin. You will also need to make sure you add your Ogre and OIS includes and libs 
+to the project or it will not compile. Make sure to add ogre/include and not
+ogre/include/ogre and ogre/include/ois.
+
+When including Breezy in your project, make sure you add all of the files to
+your project. Breezy is not a linked library, it is distributed in source only.
+If you do not add all of the files to your project, you will not be able to compile
+correctly. If you choose to compile Breezy into a library, this will also solve
+the problem.
 
 -End------ ---------- ---------- ----------
 
