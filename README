@@ -2,7 +2,7 @@ Wow, you're actually reading this? That's amazing.
 This will hopefully become my framework for any Ogre3d related projects.
 
 I'm not expert on source code licenses, but read the one below for information.
-Based on the zlib license with one amendment (Restriction 4). It basically
+Uses the zlib license. It basically
 says you can use this for anything you'd like as long as it doesn't contain
 adult or illegal themes, you must not claim this software as your own, you
 must clearly mark all of your changes within the code should you redistribute
@@ -41,6 +41,3 @@ freely, subject to the following restrictions:
 
    3. This notice may not be removed or altered from any source
    distribution.
-
-   4. This software must not be used in any products which contain nudity or
-   promote illegal activity of any sort.
