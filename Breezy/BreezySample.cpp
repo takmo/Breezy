@@ -79,6 +79,9 @@ namespace Breezy
 			root->_fireFrameEnded();
 		}
 
+                input->Stop();
+                delete input;
+
 		_StopOgre();
 		return true;
 	}
