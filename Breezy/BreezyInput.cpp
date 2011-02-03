@@ -169,6 +169,7 @@ namespace Breezy
 	{
 		if(running)
 		{
+                        Ogre::WindowEventUtilities::removeWindowEventListener(window, this);
 			for(unsigned int i = 0; i < listeners.size();)
 			{
 				listeners.pop_back();
