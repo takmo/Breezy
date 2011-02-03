@@ -1,7 +1,7 @@
 /*
 File: BreezyInputListener.h
 
-Copyright (c) 2010 Joshua Dolifka
+Copyright (c) 2011 TechnoBulldog
 
 This software is provided 'as-is', without any express or implied
 warranty. In no event will the authors be held liable for any damages
