@@ -144,6 +144,18 @@ namespace Breezy
 		listeners.push_back(listener);
 		return true;
 	}
+	bool Input::RemoveInputListener(InputListener * listener)
+	{
+		for(unsigned int i = 0; i < listeners.size(); i++)
+		{
+			if(listeners[i] == listener)
+			{
+				listeners.erase(listeners.begin() + i);
+				return true;
+			}
+		}
+		return true;
+	}
 	bool Input::Start(Ogre::RenderWindow * win)
 	{
 		window = win;
@@ -169,7 +181,7 @@ namespace Breezy
 	{
 		if(running)
 		{
-                        Ogre::WindowEventUtilities::removeWindowEventListener(window, this);
+			Ogre::WindowEventUtilities::removeWindowEventListener(window, this);
 			for(unsigned int i = 0; i < listeners.size();)
 			{
 				listeners.pop_back();
