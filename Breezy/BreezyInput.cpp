@@ -222,6 +222,7 @@ namespace Breezy
 		if(!mouse || !keyboard) return false;
 		mouse->capture();
 		keyboard->capture();
+		Ogre::WindowEventUtilities::messagePump();
 		return true;
 	}
 	bool Input::_SetZero()
