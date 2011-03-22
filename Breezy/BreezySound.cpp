@@ -42,6 +42,20 @@ namespace Breezy
 		source = 0;
 		hasaudio = false;
 	}
+	int Sound::GetState()
+	{
+		if(source)
+		{
+			ALint state = NULL;
+			alGetSourcei(source, AL_SOURCE_STATE, &state);alGetError();
+			return state;
+		}
+		else
+		{
+			Ogre::LogManager::getSingleton().logMessage("--BreezySound-- Could not query AL state, invalid source. Did you successfully add a sound?");
+			return -1;
+		}
+	}
 	bool Sound::HasAudio()
 	{
 		return hasaudio;

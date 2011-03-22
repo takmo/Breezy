@@ -41,6 +41,7 @@ namespace Breezy
 		Sound();			// Constructor
 		~Sound();			// Destructor.
 
+		int GetState();						// Returns the AL state of the source.
 		bool HasAudio();					// True if audio is set for this object.
 		bool PauseSound();					// Pause playing the sound.
 		bool PlaySound();					// Play the sound.
