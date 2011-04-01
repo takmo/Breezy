@@ -42,6 +42,7 @@ namespace Breezy
 		~Sound();			// Destructor.
 
 		int GetState();						// Returns the AL state of the source.
+		Ogre::String GetName();				// Returns the name of the file.
 		bool HasAudio();					// True if audio is set for this object.
 		bool PauseSound();					// Pause playing the sound.
 		bool PlaySound();					// Play the sound.
@@ -55,7 +56,9 @@ namespace Breezy
 
 	protected:
 		bool hasaudio;				// Is the object running?
+		int mode;					// 0 unloaded, 1 ogg, 2 wav.
 		ALuint source;				// The audio source.
+		Ogre::String name;			// Audio track name.
 	};
 };
 

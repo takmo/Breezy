@@ -56,9 +56,9 @@ namespace Breezy
 			return -1;
 		}
 	}
-	bool Sound::HasAudio()
+	Ogre::String Sound::GetName()
 	{
-		return hasaudio;
+		return name;
 	}
 	bool Sound::PauseSound()
 	{
@@ -110,7 +110,9 @@ namespace Breezy
 	{
 		if(source)
 		{
+			StopSound();
 			alDeleteSources(1, &source);alGetError();
+			_SetZero();
 			return true;
 		}
 		else
@@ -132,38 +134,59 @@ namespace Breezy
 			return false;
 		}
 	}
-	bool Sound::SetSound(Ogre::String filename) // DOES NOT WORK!
+	bool Sound::SetSound(Ogre::String filename)
 	{
-		ALuint buffer;
-		ALenum format;
-		alGenBuffers(1, &buffer);alGetError();
-		alGenSources(1, &source);alGetError();
-
-		// Begin that there Ogg stuff.
-		long ldata; char cbuffer[4096]; std::string data = "";
-		OggVorbis_File ogg;
-		FILE * track = 0;
+		FILE * track;
 		fopen_s(&track, filename.c_str(), "rb");
-		long rate;
-		if(track)
+		if(!track) // If there is no file with that name.
 		{
-			ov_open(track, &ogg, NULL, 0);
-			vorbis_info * info = ov_info(&ogg, -1);
-			if(info->channels == 2) format = AL_FORMAT_STEREO16;
-			else format = AL_FORMAT_MONO16;
-			rate = info->rate; 
-			do{ldata = ov_read(&ogg, cbuffer, 4096, 0, 2, 1, NULL); data.insert(data.end(), cbuffer, cbuffer + ldata);}while(ldata > 0);
-			ov_clear(&ogg);
-			alBufferData(buffer, format, data.data(), static_cast<ALsizei>(data.size()), rate);alGetError();
+			Ogre::LogManager::getSingleton().logMessage("--BreezySound-- Could not open audio file for reading.");
 			fclose(track);
-			alSourcei(source, AL_BUFFER, buffer);alGetError();
-		}
-		else
-		{
-			Ogre::LogManager::getSingleton().logMessage("--BreezySound-- Could not OGG file for reading.");
 			return false;
 		}
-		// End that there Ogg stuff.
+
+		alGenSources(1, &source);alGetError();
+
+		if(Ogre::StringUtil::endsWith(filename, ".ogg"))
+		{
+			mode = 2;
+			OggVorbis_File ogg;
+			ov_open(track, &ogg, NULL, 0);
+			vorbis_info *vorbisinfo = ov_info(&ogg, -1);
+
+			ALuint nostreambuffer;
+			alGenBuffers(1, &nostreambuffer);alGetError();
+			long length = 0;
+			char data[4096];
+			Ogre::String adata = "";
+
+			ALenum format;
+			if(vorbisinfo->channels == 2)
+				format = AL_FORMAT_STEREO16;
+			else
+				format = AL_FORMAT_MONO16;
+			long rate = vorbisinfo->rate;
+
+			do
+			{
+				length = ov_read(&ogg, data, 4096, 0, 2, 1, NULL);
+				adata.insert(adata.end(), data, data + length);
+			} while(length > 0);
+
+			alBufferData(nostreambuffer, format, adata.data(), static_cast<ALsizei>(adata.size()), rate);alGetError();
+
+			ov_clear(&ogg);
+			fclose(track);
+
+			alSourcei(source, AL_BUFFER, nostreambuffer);alGetError();
+			hasaudio = true;
+		}
+		if(Ogre::StringUtil::endsWith(filename, ".wav"))
+		{
+			// NOT WORKING AS OF YET!
+		}
+
+		name = filename;
 
 		return true;
 	}
@@ -194,6 +217,8 @@ namespace Breezy
 	{
 		hasaudio = false;
 		source = NULL;
+		mode = 0;
+		name = "";
 		return true;
 	}
 };
