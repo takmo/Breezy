@@ -27,6 +27,7 @@ freely, subject to the following restrictions:
 #define __BREEZYSAMPLE_H__
 
 #include "Breezy.h"
+#include "Gorilla.h"
 
 #include <iostream>
 #include <OIS/OIS.h>				// OIS

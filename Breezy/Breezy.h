@@ -26,6 +26,7 @@ freely, subject to the following restrictions:
 #ifndef __BREEZY_H__
 #define __BREEZY_H__
 
+#include "BreezyConsole.h"
 #include "BreezyInput.h"
 #include "BreezySound.h"
 

@@ -1,3 +1,5 @@
+THE SAMPLE PROGRAM HAS FALLEN INTO DISREPAIR. PLEASE IGNORE IT!
+
 Wow, you're actually reading this? That's amazing. 
 This will hopefully become my framework for any Ogre3d related projects.
 
@@ -23,6 +25,19 @@ freely, subject to the following restrictions:
 
    3. This notice may not be removed or altered from any source
    distribution.
+   
+-Todo----- ---------- ---------- ----------
+
+Add support for WAV files in BreezySound.
+Add support for streaming WAV and OGG sounds in BreezyAudio.
+Remove all non-platform-specific bugs.
+
+-Updates-- ---------- ---------- ----------
+
+April 02, 2011
+	Uploading BreezyConsole. I have just finished it and there are probably bugs.
+	Scratch that, there is one bug. Sometimes when typing in commands, a space is
+	added before the command. Anyone who has a fix, please let me know!
 
 -Notes---- ---------- ---------- ----------
 
@@ -57,8 +72,8 @@ If you find a problem, I would love to find out what it is and learn from my
 mistake. I'm putting this framework on the internet in hopes that this may
 be able to help others with their programming in some way.
 
-Made in with Ogre 1.7.1 using Microsoft Visual C++ 2010 Express Edition on
-Windows 7. I cannot guarantee functionality on other systems.
+Made in with Ogre 1.7.2 using Microsoft Visual C++ 2010 Express Edition on
+Windows 7. I cannot guarantee functionality in other build environments.
 
 -Contents- ---------- ---------- ----------
 
@@ -72,7 +87,7 @@ README - This file.
 
 -Usage---- ---------- ---------- ----------
 
-This framework requires Gorilla (or at least will soon....) It is written by
+This framework requires Gorilla. Gorilla is written by
 the amazing betajaen (Robin Southern). Gorilla can be found at the folling 
 page: https://github.com/betajaen/gorilla Just copy and paste Gorilla.h
 and Gorilla.cpp inside your Breezy folder.
