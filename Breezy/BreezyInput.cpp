@@ -156,7 +156,7 @@ namespace Breezy
 		}
 		return true;
 	}
-	bool Input::Start(Ogre::RenderWindow * win)
+	bool Input::Start(Ogre::RenderWindow * win, bool exclusive)
 	{
 		window = win;
 		OIS::ParamList pl;
@@ -165,6 +165,11 @@ namespace Breezy
 		window->getCustomAttribute("WINDOW", &windowHnd);
 		windowHndStr << windowHnd;
 		pl.insert(std::make_pair(std::string("WINDOW"), windowHndStr.str()));
+		if(!exclusive)
+		{
+			pl.insert(std::make_pair(std::string("w32_mouse"), std::string("DISCL_FOREGROUND" )));
+			pl.insert(std::make_pair(std::string("w32_mouse"), std::string("DISCL_NONEXCLUSIVE")));
+		}
 		manager = OIS::InputManager::createInputSystem(pl);
 		keyboard = static_cast<OIS::Keyboard*>(manager->createInputObject(OIS::OISKeyboard, true));
 		mouse = static_cast<OIS::Mouse*>(manager->createInputObject(OIS::OISMouse, true));

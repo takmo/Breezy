@@ -63,7 +63,7 @@ namespace Breezy
 		bool mouseMoved(const OIS::MouseEvent &evt);	// CALLBACK.
 		bool PushInputListener(InputListener * listener);	// Add an input listener.
 		bool RemoveInputListener(InputListener * listener);	// Remove an input listener.
-		bool Start(Ogre::RenderWindow * win);			// Start the object.
+		bool Start(Ogre::RenderWindow * win, bool exclusive = true);			// Start the object.
 		bool Stop();									// Stop the object.
 		void windowClosed(Ogre::RenderWindow * win);	// CALLBACK.
 		void windowResized(Ogre::RenderWindow * win);	// CALLBACK.
