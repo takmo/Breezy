@@ -207,7 +207,7 @@ namespace Breezy
 		{
 			listeners[i]->WindowClosed(win);
 		}
-		Stop();
+		//Stop();
 	}
 	void Input::windowResized(Ogre::RenderWindow * win)
 	{
